@@ -9,8 +9,10 @@ module.exports = function check(str, bracketsConfig) {
                 if(!to_close.includes(_str[i])){
                     to_close.push(bracketsConfig[j][1])
                 }else{
-                    if(to_close.pop() !== _str[i]){
-                        return false
+                    if(to_close[to_close.length - 1] !== _str[i]){
+                        to_close.push(bracketsConfig[j][1])
+                    }else{
+                        to_close.pop()
                     }
                 }
             }
